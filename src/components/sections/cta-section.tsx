@@ -30,22 +30,17 @@ export function CtaSection() {
           </div>
 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
-            <div className="space-y-2">
-              <p className="text-3xl font-bold text-white">98%</p>
-              <p className="text-sm text-white/80">Customer Satisfaction</p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-3xl font-bold text-white">40%</p>
-              <p className="text-sm text-white/80">Reduced Documentation Time</p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-3xl font-bold text-white">90%</p>
-              <p className="text-sm text-white/80">Prior Auth Success Rate</p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-3xl font-bold text-white">35%</p>
-              <p className="text-sm text-white/80">Reduction in Billing Errors</p>
-            </div>
+            {[
+              { value: '98%', label: 'Customer Satisfaction' },
+              { value: '40%', label: 'Reduced Documentation Time' },
+              { value: '90%', label: 'Prior Auth Success Rate' },
+              { value: '35%', label: 'Reduction in Billing Errors' },
+            ].map(({ value, label }) => (
+              <div className="space-y-2" key={label}>
+                <p className="text-3xl font-bold text-white">{value}</p>
+                <p className="text-sm text-white/80">{label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

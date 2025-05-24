@@ -14,7 +14,7 @@ type Testimonial = {
 };
 
 export function TestimonialsSection() {
-  const testimonials: Testimonial[] = [
+  const testimonialList: Testimonial[] = [
     {
       id: 1,
       quote:
@@ -61,9 +61,9 @@ export function TestimonialsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
+          {testimonialList.map(({ id, quote, name, title, company, avatarUrl }) => (
             <Card
-              key={testimonial.id}
+              key={id}
               className="testimonial-card border border-slate-200 bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-300"
             >
               <CardContent className="p-8">
@@ -81,20 +81,20 @@ export function TestimonialsSection() {
                       fill="currentColor"
                     />
                   </svg>
-                  <p className="text-slate-700 leading-relaxed">"{testimonial.quote}"</p>
+                  <p className="text-slate-700 leading-relaxed">"{quote}"</p>
                   <div className="flex items-center">
                     <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
                       <Image
-                        src={testimonial.avatarUrl}
-                        alt={testimonial.name}
+                        src={avatarUrl}
+                        alt={name}
                         fill
                         className="object-cover"
                       />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-slate-900">{testimonial.name}</h4>
+                      <h4 className="font-semibold text-slate-900">{name}</h4>
                       <p className="text-sm text-slate-600">
-                        {testimonial.title}, {testimonial.company}
+                        {title}, {company}
                       </p>
                     </div>
                   </div>

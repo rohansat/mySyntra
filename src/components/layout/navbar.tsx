@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -28,30 +28,10 @@ export function Navbar() {
         </div>
 
         <nav className="hidden flex-1 items-center justify-center space-x-6 md:flex">
-          <Link
-            href="/products"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            Products
-          </Link>
-          <Link
-            href="/solutions"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            Solutions
-          </Link>
-          <Link
-            href="/pricing"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            About Us
-          </Link>
+          <Link href="/products" className="text-sm font-medium transition-colors hover:text-primary">Products</Link>
+          <Link href="/solutions" className="text-sm font-medium transition-colors hover:text-primary">Solutions</Link>
+          <Link href="/pricing" className="text-sm font-medium transition-colors hover:text-primary">Pricing</Link>
+          <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">About Us</Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4 ml-auto">
@@ -68,55 +48,27 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             aria-label="Toggle Menu"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
-            {isMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
 
-      {isMenuOpen && (
+      {menuOpen && (
         <div className="md:hidden p-4 pt-0 bg-background">
           <nav className="flex flex-col space-y-4 pb-4">
-            <Link
-              href="/products"
-              className="text-sm font-medium transition-colors hover:text-primary py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Products
-            </Link>
-            <Link
-              href="/solutions"
-              className="text-sm font-medium transition-colors hover:text-primary py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Solutions
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-sm font-medium transition-colors hover:text-primary py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/about"
-              className="text-sm font-medium transition-colors hover:text-primary py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About Us
-            </Link>
+            <Link href="/products" className="text-sm font-medium transition-colors hover:text-primary py-2" onClick={() => setMenuOpen(false)}>Products</Link>
+            <Link href="/solutions" className="text-sm font-medium transition-colors hover:text-primary py-2" onClick={() => setMenuOpen(false)}>Solutions</Link>
+            <Link href="/pricing" className="text-sm font-medium transition-colors hover:text-primary py-2" onClick={() => setMenuOpen(false)}>Pricing</Link>
+            <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary py-2" onClick={() => setMenuOpen(false)}>About Us</Link>
           </nav>
           <div className="flex flex-col space-y-3">
             <Button variant="outline" className="w-full" asChild>
-              <Link href="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
+              <Link href="/login" onClick={() => setMenuOpen(false)}>Login</Link>
             </Button>
             <Button className="w-full" asChild>
-              <Link href="/demo" onClick={() => setIsMenuOpen(false)}>Book a Demo</Link>
+              <Link href="/demo" onClick={() => setMenuOpen(false)}>Book a Demo</Link>
             </Button>
           </div>
         </div>

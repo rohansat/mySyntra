@@ -11,7 +11,7 @@ type Feature = {
 };
 
 export function FeaturesSection() {
-  const features: Feature[] = [
+  const featureList: Feature[] = [
     {
       id: 1,
       title: "AI-Powered Documentation",
@@ -266,14 +266,14 @@ export function FeaturesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {features.map((feature) => (
-            <div key={feature.id} className="flex gap-4">
+          {featureList.map(({ id, icon, title, description }) => (
+            <div key={id} className="flex gap-4">
               <div className="flex-shrink-0 h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                {feature.icon}
+                {icon}
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-slate-600">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2">{title}</h3>
+                <p className="text-slate-600">{description}</p>
               </div>
             </div>
           ))}

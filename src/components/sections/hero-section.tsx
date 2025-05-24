@@ -6,18 +6,18 @@ import Link from "next/link";
 import Image from "next/image";
 
 export function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [showDemoPic, setShowDemoPic] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [showDemoImage, setShowDemoImage] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    setVisible(true);
   }, []);
 
   return (
     <section className="relative overflow-hidden hero-gradient py-20 md:py-28">
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`space-y-6 transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-block rounded-full bg-white/10 backdrop-blur-sm px-4 py-1.5">
               <span className="text-sm font-medium text-white">Revolutionizing Healthcare Administration</span>
             </div>
@@ -40,25 +40,25 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="relative z-10 floating bg-white rounded-lg shadow-2xl p-4">
-              {!showDemoPic ? (
-                <Image
-                  src="/syntra-logo.png"
-                  alt="Syntra Platform"
-                  width={600}
-                  height={400}
-                  className="object-contain cursor-pointer"
-                  onMouseEnter={() => setShowDemoPic(true)}
-                />
-              ) : (
+              {showDemoImage ? (
                 <Image
                   src="/syntra demo pic .png"
                   alt="Syntra Demo"
                   width={600}
                   height={400}
                   className="object-contain cursor-pointer"
-                  onClick={() => setShowDemoPic(false)}
+                  onClick={() => setShowDemoImage(false)}
+                />
+              ) : (
+                <Image
+                  src="/syntra-logo.png"
+                  alt="Syntra Platform"
+                  width={600}
+                  height={400}
+                  className="object-contain cursor-pointer"
+                  onMouseEnter={() => setShowDemoImage(true)}
                 />
               )}
             </div>
