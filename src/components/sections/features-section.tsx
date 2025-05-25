@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 type Feature = {
   id: number;
@@ -250,7 +251,13 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      className="py-16 md:py-24 bg-white"
+    >
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">
@@ -279,6 +286,6 @@ export function FeaturesSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

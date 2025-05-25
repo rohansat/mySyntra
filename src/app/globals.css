@@ -74,6 +74,12 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  .dark body {
+    @apply bg-slate-900 text-white;
+  }
+  .dark .card, .dark .testimonial-card {
+    @apply bg-slate-800 text-white;
+  }
 }
 
 /* Custom Styles */

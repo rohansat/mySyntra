@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export function HeroSection() {
   const [visible, setVisible] = useState(false);
@@ -14,7 +15,13 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden hero-gradient py-20 md:py-28">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      className="relative overflow-hidden hero-gradient py-20 md:py-28"
+    >
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className={`space-y-6 transition-all duration-1000 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -65,6 +72,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

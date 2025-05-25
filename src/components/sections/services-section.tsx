@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ServicesSection() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -55,7 +56,13 @@ export function ServicesSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      className="py-16 md:py-24 bg-white"
+    >
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">OUR SERVICES</div>
@@ -91,6 +98,6 @@ export function ServicesSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

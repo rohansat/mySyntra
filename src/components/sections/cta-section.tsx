@@ -2,10 +2,17 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function CtaSection() {
   return (
-    <section className="py-16 md:py-24 hero-gradient relative overflow-hidden">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      className="py-16 md:py-24 hero-gradient relative overflow-hidden"
+    >
       {/* Blob shape backgrounds */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-cyan-400/10 rounded-full filter blur-3xl blob-animation -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full filter blur-3xl blob-animation translate-x-1/3 translate-y-1/3"></div>
@@ -44,6 +51,6 @@ export function CtaSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
