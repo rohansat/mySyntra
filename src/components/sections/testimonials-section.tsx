@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,7 +15,7 @@ type Testimonial = {
 };
 
 export function TestimonialsSection() {
-  const testimonialList: Testimonial[] = [
+  const testimonialList = useMemo(() => ([
     {
       id: 1,
       quote:
@@ -43,12 +43,12 @@ export function TestimonialsSection() {
       company: "Westside Health Partners",
       avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&h=256&auto=format&fit=crop",
     },
-  ];
+  ]), []);
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % testimonialList.length);
-    }, 5000);
+    }, 6000);
     return () => clearTimeout(timer);
   }, [current, testimonialList.length]);
 
@@ -72,10 +72,10 @@ export function TestimonialsSection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={testimonialList[current].id}
-                initial={{ opacity: 0, x: 40 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
                 className="absolute w-full"
               >
                 <Card
@@ -104,6 +104,7 @@ export function TestimonialsSection() {
                             alt={testimonialList[current].name}
                             fill
                             className="object-cover"
+                            loading="lazy"
                           />
                         </div>
                         <div>
